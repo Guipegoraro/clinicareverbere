@@ -55,7 +55,6 @@ submitAppointmentForm.addEventListener("click", (event) => {
 
 
 //  VALIDAÇÃO FORMULÁRIO DE CONTATO
-//! (AO ADICIONAR AO REPLIT ENVIAR JUNTO O CSS E HTML MODIFICADO)
 
 let contactName = document.getElementById("contactName");
 let contactEmail = document.getElementById("contactEmail");
