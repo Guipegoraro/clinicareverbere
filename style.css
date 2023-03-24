@@ -169,11 +169,11 @@ header{
     display: flex;
     justify-content: center;
     position: sticky;
-    bottom: 81vh;
-    height: 8vh;
+    bottom: 85vh;
+    height: 4vh;
     left: 0%;
     width: 100vw;
-    font-size: 3vw;
+    font-size: 1.5vw;
     background-color: #07ade0;
     color: rgb(255, 255, 255);
     z-index: 0;
