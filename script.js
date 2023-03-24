@@ -1,3 +1,20 @@
+/* window.onscroll = function () {funcaoScrollBarra();};
+let bannerFrase = document.getElementsByClassName("textBanner")[0];
+function funcaoScrollBarra() {
+  console.log('working', bannerFrase)
+  if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+    bannerFrase.classList.add = "stickyBanner";
+  } else {
+    bannerFrase.classList.remove = "stickyBanner";
+  }
+}
+
+ */
+
+
+
+
+
 // VALIDAÇÃO FORMULÁRIO DE MARCAR CONSULTA
 let appointmentName = document.getElementById("appointmentName");
 let appointmentEmail = document.getElementById("appointmentEmail");

@@ -160,15 +160,25 @@ header{
 
 
 .textBanner {
-    
+    /*
     top: 50%;
     left: 45%;
     font-size: 4em;
+    text-allign: center;
+    */
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    bottom: 81vh;
+    height: 8vh;
+    left: 0%;
+    width: 100vw;
+    font-size: 3vw;
     background-color: #07ade0;
     color: rgb(255, 255, 255);
     z-index: 0;
-    text-align: center;
 }
+
 
 .content {
    
@@ -309,6 +319,21 @@ header{
 }
 
 @media screen and (max-width: 770px){
+/* ISSO É UMA TENTATIVA DE FAZER COM QUE A BARRINHA FIQUE RESPONSIVA */
+
+
+    #slogan {
+        margin: 5px auto;
+        text-align: center;
+        width: 70%;
+        font-size: 4vw;
+    }
+    .textBanner {
+        height: 11vw;
+        bottom: 79.5vh;
+    }
+
+
 
     .label{
 
@@ -352,4 +377,11 @@ header{
     }
 
 
+}
+
+
+.stickyBanner {
+    position: fixed !important;
+    top: 94%;
+    border: 5px solid red;
 }
