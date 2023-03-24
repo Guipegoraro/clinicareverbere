@@ -17,6 +17,7 @@ hero com a apresentação da instituição, contendo o quem somos, valores e mis
 
 corpo clinico:
 texto sobre cada funcionario, 3 seções podendo ser escalavel
+NÃO TERÁ FOTO DOS FUNCIONARIOS
 
 agende sua consulta:
 formulário e demonstrar o calendario
