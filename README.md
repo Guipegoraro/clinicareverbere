@@ -40,6 +40,10 @@ valores
 texto sobre cada funcionario
 
 
+# TODO
+adicionar "letras miudas" sobre LGPD nos formulários
+
+
 # IDENTIDADE VISUAL:
 
 FONTES:
