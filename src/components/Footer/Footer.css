@@ -1,0 +1,50 @@
+.footer {
+    background-color: #07ade0;
+    height: 25vh;
+    grid-area: footer;
+    display: grid;
+    grid-template-areas: 
+    "form form"
+    "form2 form2"
+    "message message";
+    justify-content: end;
+    align-content: center;
+}
+
+.form3 {
+    grid-area: form;
+    margin: 30px 200px 0 0;
+}
+
+.form4 {
+    grid-area: form2;
+    margin: 30px 200px 0 0;
+}
+
+.message {
+    grid-area: message;
+    margin: 30px 200px 0 0;
+}
+
+.message button{
+    margin-left: 140px;
+    padding: 10px 20px;
+}
+
+/* formularios:  */
+.deniedForm {
+  position: relative;
+  animation: shake .1s linear;
+  animation-iteration-count: 3;
+  border: 1px solid red;
+  outline: none;
+}
+
+@keyframes shake {
+  0% {
+    left: -5px;
+  }
+  100% {
+    right: -5px;
+  }
+}

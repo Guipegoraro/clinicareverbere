@@ -1,145 +1,20 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Clínica Reverbere</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
-</head>
-
-<body>
-   <main class="area">
-       
-       <section class="header">
-           
-           
-            
-           
-           <header>
-               <div class="container">
-                   <nav class="nav_checkbox">
-                       <a href="#" class="logo">
-                           <img id="imgLogo" src="assets/img/REVERBERE_logo_png.png" alt="logo">                           
-                        </a>
-                        <input type="checkbox" id="tab-nav" class="tab-nav">
-                        <label for="tab-nav" class="label">
-                            <div class="burger"></div>
-                            <div class="burger"></div>
-                            <div class="burger"></div>
-                        </label>
-                        <ul class="content_nav">
-                            <li><a href="#">HOME</a></li>
-                            <li><a href="#">INSTITUIÇÃO</a></li>
-                            <li><a href="#">CORPO CLÍNICO</a></li>
-                            <li><a href="#">AGENDE SUA CONSULTA</a></li>
-                            <li><a href="#">PARA PROFISSIONAIS</a></li>
-                        </ul>
-                    </nav>
-                </div>               
-            </header>
-            
-            
-            
-            
-
-            
-            
-            <div class="banner">
-                <img class="bannerImg" src="assets/img/clinica.jpg" alt="Imagem">
-            </div>
-        </div>
-    </section>
-    
-    <section class="content">
-        <div class="textBanner"><p id="slogan">Reflita, emita, transmita, repita, ecoe, ressoe, percuta, destaque.</p></div>
-        
-        
-            <div class="institution">
-                <img class="imgInst" src="assets/img/clinica.jpg" alt="IMAGEM EXEMPLO" style="width: 50vw;">
-                <p class="pInst">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis doloremque delectus sint vel architecto voluptatem, reiciendis consectetur sapiente laudantium neque, ut expedita corporis tempora modi, explicabo est ipsa illo. Voluptates!Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis doloremque delectus sint vel architecto voluptatem, reiciendis consectetur sapiente laudantium neque, ut expedita corporis tempora modi, explicabo est ipsa illo. Voluptates!ente laudantium neque, ut expedita corporis tempora modi, explicabo est ipsa illo. Voluptates!Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis doloremque delectus sint vel architecto voluptatem, reiciendis consectetur sapiente laudantium neque, ut expedita corporis tempora modi, explicabo est ipsa illo. Voluptates!ente laudantium neque, ut expedita corporis tempora modi, explicabo est ipsa illo. Voluptates!Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis doloremque delectus sint vel architecto voluptatem, reiciendis consectetur sapiente laudantium neque, ut expedita corporis tempora modi, explicabo est ipsa illo. Voluptates!</p>
-            </div>
-
-            <div class="id">
-                <div class="whoAreWe">
-                    <img class="imgWhoAreWe" src="assets/img/funcionario.jpg" alt="RISOS">
-                    <h3 class="textWhoAreWe">Profissional1</h3>
-                </div>
-                <div class="whoAreWe">
-                    <img class="imgWhoAreWe" src="assets/img/funcionario.jpg" alt="RISOS">
-                    <h3 class="textWhoAreWe">Profissional2</h3>
-                </div>
-                <div class="whoAreWe">
-                    <img class="imgWhoAreWe" src="assets/img/funcionario.jpg" alt="RISOS">
-                    <h3 class="textWhoAreWe">Profissional3</h3>
-                </div>
-            </div>
-        </section>
-
-
-        <section class="contact">
-            <div class="appointmentForm">
-                <form action="#" method="#">
-                  <div class="form">
-                    <label for="appointmentName">Nome: </label>
-                    <input type="text" name="appointmentName" id="appointmentName" required placeholder="Nome">
-                    <label for="appointmentEmail">E-mail</label>
-                    <input type="email" name="appointmentEmail" id="appointmentEmail" required placeholder="Email">
-                    <label for="appointmentNumber">Número (com DDD):</label>
-                    <input type="text" name="appointmentNumber" id="appointmentNumber" placeholder="Telefone">
-                  </div>
-                  <div class="form2">
-                    <label for="appointmentAge">Idade do paciente:</label>
-                    <input type="number" name="appointmentAge" id="appointmentAge" required placeholder="Idade">
-                    <label for="appointmentSelectedPerson">Digite o nome da profissional ou deixe em branco para ser recomendado uma:</label>
-                    <input type="text" name="appointmentSelectedPerson" id="appointmentSelectedPerson" placeholder="Digite o nome da profissional (opcional)"></input>
-                    <p id="appointmentTypeLabel">Tipo de atendimento (selecione um): </p>
-                    <label for="appointmentTypeOnline">Online: </label>
-                    <input type="radio" name="appointmentType" id="appointmentTypeOnline">
-                    <label for="appointmentTypeLive">Presencial: </label>
-                    <input type="radio" name="appointmentType" id="appointmentTypeLive">
-                    <label for="appointmentMessage">Mensagem (máximo de 250 caracteres):</label>
-                    <textarea maxlength="250" name="appointmentMessage" id="appointmentMessage" placeholder="Escreva aqui sua mensagem"></textarea>
-                  </div>
-                  <div class="submitBtn">
-                    <button id="submitAppointmentForm" type="button" >Marcar Consulta</button>
-                  </div>
-                </form>
-      
-              </div>
-        </section>
-
-
-        <section class="footer">
-            <footer>
-                <form action="#" method="#">
-                    <div class="form3">
-                        <label for="contactName">Nome: </label>
-                        <input type="text" name="contactName" id="contactName" required placeholder="Nome">
-                        <label for="contactEmail"></label>
-                        <input type="email" name="contactEmail" id="contactEmail" required placeholder="Email">
-                    </div>
-                    <div class="form4">
-                        <label for="contactNumber"></label>
-                        <input type="text" name="contactNumber" id="contactNumber" placeholder="Telefone">
-                        <label for="contacSubject">Assunto:</label>
-                        <input type="text" name="contactSubject" id="contactSubject" required placeholder="Assunto">
-                    </div>
-                    <div class="message">
-                        <label for="contactMessage"></label>
-                        <textarea name="contactMessage" id="contactMessage"
-                            placeholder="Escreva aqui sua mensagem"></textarea><br>
-                        <button id="submitContactForm">Enviar Mensagem</button>
-                    </div>
-                </form>
-            </footer>
-        </section>
-    </main>
-    
-<!--Colocar esse form abaixo de acordo com as classes do grid -->
-
-  <script src="script.js"></script>
-
-</body>
-
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React + TypeScript + Replit</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/index.jsx"></script>
+		
+    <!--
+    This script places a badge on your repl's full-browser view back to your repl's cover
+    page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
+    teal, blue, blurple, magenta, pink!
+    -->
+    <script src="https://replit.com/public/js/replit-badge-v2.js" theme="dark" position="bottom-right"></script>
+  </body>
 </html>
