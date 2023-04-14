@@ -12,15 +12,22 @@
   
   <main style="display: flex; flex-direction: column; background-color: #efefef; text-align: center;">
     <h1 style="border: 1px solid #efefef; color: #07ade0;">Reverbere</h1>
-    <h4 style="color: #07ade0;">Sua mensagem foi enviada com sucesso! Em breve retornaremos para confirmar sua consulta no seu celular, você será redirecionado em 10 segundos...</h4>
+    <h4 style="color: #07ade0;">Sua mensagem foi enviada com sucesso! Em breve retornaremos para confirmar sua consulta no seu celular, você será redirecionado em <span id=timer>10</span> segundos...</h4>
     <a style="text-decoration: none;" href="siteoriginal">Voltar à página original.</a>
   </main>
 
   <script>
-    function redirect() {
-      window.location.href = "siteoriginal";
-    }
-    setTimeout(redirect, 10000);
+    var timeleft = 10;
+    var redirectTimer = setInterval(function(){
+      if(timeleft <= 0){
+        clearInterval(redirectTimer);
+        document.getElementById("timer").innerHTML = "0";
+        window.location.href = "siteoriginal";
+      } else {
+        document.getElementById("timer").innerHTML = timeleft;
+      }
+      timeleft -= 1;
+    }, 1000);
   </script>
   <script src="script.js"></script>
   <script src="https://replit.com/public/js/replit-badge-v2.js" theme="dark" position="bottom-right"></script>
