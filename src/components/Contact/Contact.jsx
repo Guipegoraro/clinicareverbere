@@ -24,28 +24,24 @@ function Contact() {
     if (regexEmail.test(String(email).toLowerCase())) {
       validatedFunc += 1;
       setEmailValidated(true);
-      console.log('email valido')
     } else {
       setEmailValidated(false);
     }
     if (nome.length > 3) {
       validatedFunc += 1;
       setNomeValidated(true);
-      console.log('nome valido')
     } else {
       setNomeValidated(false);
     }
     if (mensagem.length > 3) {
       validatedFunc += 1;
       setMensagemValidated(true);
-      console.log('mensagem valida')
     } else {
       setMensagemValidated(false);
     }
     if (telefone.replace(/\D/g, "").length === 11) {
       validatedFunc += 1;
       setTelefoneValidated(true);
-      console.log('telefone valido')
     } else {
       setTelefoneValidated(false);
     }
@@ -59,7 +55,6 @@ function Contact() {
     if (tipoDeAtendimento != "") {
       validatedFunc += 1;
       setTipoDeAtendimentoValidated(true);
-      console.log('tipo de atendimento valido' + tipoDeAtendimento)
     } else {
       setTipoDeAtendimentoValidated(false);
     }
