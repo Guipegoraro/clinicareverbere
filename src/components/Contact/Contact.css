@@ -1,7 +1,7 @@
 .deniedForm {
   animation: shake .1s linear;
   animation-iteration-count: 3;
-  border: 1px solid red !important;
+  border: 2px solid red !important;
   outline: none;
 }
 
