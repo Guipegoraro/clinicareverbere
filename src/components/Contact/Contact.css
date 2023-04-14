@@ -1,3 +1,22 @@
+.deniedForm {
+  animation: shake .1s linear;
+  animation-iteration-count: 3;
+  border: 1px solid red !important;
+  outline: none;
+}
+
+@keyframes shake {
+  0% {
+    left: -5px;
+  }
+  100% {
+    right: -5px;
+  }
+}
+/* add shaking to denied form when activated */
+
+
+
 
 
 .contact_container{
