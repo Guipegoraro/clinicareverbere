@@ -18,6 +18,9 @@ function Contact() {
   const [tipoDeAtendimentoValidated, setTipoDeAtendimentoValidated] = useState(true);
   const [mensagemValidated, setMensagemValidated] = useState(true);
   const [formsubmited, setFormSubmited] = useState(false);
+  const [calendarSize, setCalendarSize] = useState('');
+
+
 
   function validateAppointment() {
     let validatedFunc = 0;
@@ -71,14 +74,31 @@ function Contact() {
         assunto: assunto,
         mensagem: mensagem
       })
-      .then(response => {
-        console.log(response);
-        window.location.replace('http://localhost:5173//obrigado.html');
-      })
-      .catch(error => console.log(error));
+        .then(response => {
+          console.log(response);
+          window.location.replace('http://localhost:5173/obrigado.html'); // trocar para https://clinicareverbere.com.br/obrigado.html ao subir para o servidor
+        })
+        .catch(error => console.log(error));
       console.log('formulario enviado')
     }
   }
+      
+  function handleWindowResizeCalendar() {
+
+    if (window.innerWidth > 800) {
+      setCalendarSize('https://calendar.google.com/calendar/embed?height=600&wkst=2&bgcolor=%23ffffff&ctz=America%2FSao_Paulo&showTitle=0&showNav=1&showDate=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&src=cGVkbWFjaGFkbzI3QGdtYWlsLmNvbQ&color=%23039BE5');
+    } else {
+
+      setCalendarSize('https://calendar.google.com/calendar/embed?height=300&wkst=2&bgcolor=%23C0CA33&ctz=America%2FSao_Paulo&mode=AGENDA&showTz=0&showCalendars=0&showTabs=0&showPrint=0&showDate=0&showNav=1&showTitle=0&src=cGVkbWFjaGFkbzI3QGdtYWlsLmNvbQ&color=%23039BE5');
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowResizeCalendar);
+    handleWindowResizeCalendar();
+    return () => window.removeEventListener('resize', handleWindowResizeCalendar);
+  }, []);
+
 
   return (
     <section className="contact_section" id="Contact">
@@ -87,7 +107,7 @@ function Contact() {
         <div className="contact_section_heading">
           <p>Atendimentos de 9:00 às 22:00. <a href="https://calendar.google.com/calendar/u/0?cid=cGVkbWFjaGFkbzI3QGdtYWlsLmNvbQ" target="blank" class="hoverzin">Horários DISPONÍVEIS.</a></p>
         </div>
-        <form onSubmit={(event) => {event.preventDefault();}}>
+        <form onSubmit={(event) => { event.preventDefault(); }}>
           <div className="data_form_fields">
             <label htmlFor="text"></label>
             <input type="text" className={nomeValidated ? '' : 'deniedForm'} onChange={(event) => { setNome(event.target.value) }} name="Nome" id="text" required placeholder="Nome" />
@@ -109,7 +129,7 @@ function Contact() {
             <label htmlFor="text"></label>
             <input type="text" name="assunto" onChange={(event) => { setAssunto(event.target.value) }} id="assunto" required placeholder="Assunto" />
             <label htmlFor="tipo-de-atendimento"></label>
-            <select id="tipo-de-atendimento"  className={tipoDeAtendimentoValidated ? '' : 'deniedForm'} onChange={(event) => { setTipoDeAtendimento(event.target.value) }} name="tipo-de-atendimento">
+            <select id="tipo-de-atendimento" className={tipoDeAtendimentoValidated ? '' : 'deniedForm'} onChange={(event) => { setTipoDeAtendimento(event.target.value) }} name="tipo-de-atendimento">
               <option value="selecione">Selecione uma opção</option>
               <option value="online">Consulta Online</option>
               <option value="presencial">Consulta Presencial</option>
@@ -119,10 +139,10 @@ function Contact() {
           <div className="message_form_fields">
             <textarea required className={mensagemValidated ? '' : 'deniedForm'} name="mensagem" onChange={(event) => { setMensagem(event.target.value) }} placeholder="Escreva aqui sua mensagem, incluindo Data e Hora que deseja marcar sua consulta. Em seguida, enviaremos uma mensagem no whatsapp para confirmar."></textarea>
           </div>
-          <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23039BE5&ctz=America%2FSao_Paulo&showTitle=1&showNav=1&mode=WEEK&showPrint=0&showTabs=0&showCalendars=1&src=cGVkbWFjaGFkbzI3QGdtYWlsLmNvbQ&color=%23039BE5" style={{ borderWidth: 0 }} width="800" height="600" frameBorder="0" scrolling="no"></iframe>
-        <div className="form_submit_btn">
-          {formsubmited ? <p>Formulário enviado!</p> : <button onClick={() => {validateAppointment() }} >ENVIAR</button>}
-        </div>
+          <iframe id='iframeCalendar' src={calendarSize} style={{ borderWidth: 0 }} width="800" height="600" frameBorder="0" scrolling="no"></iframe>
+          <div className="form_submit_btn">
+            {formsubmited ? <p>Formulário enviado!</p> : <button onClick={() => { validateAppointment() }} >ENVIAR</button>}
+          </div>
         </form>
       </div>
     </section>
