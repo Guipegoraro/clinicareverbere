@@ -1,5 +1,7 @@
 .header {
     grid-area: header;
+    width: 100%; /* ajusta a largura para ocupar todo o espaço da coluna */
+  max-width: 100%; /* evita que o elemento ultrapasse a largura da tela */
 }
 
 .grid-header {
@@ -64,8 +66,8 @@ header{
 
 .burger{
 
-    width: 65px;
-    height: 11px;
+    width: 50px;
+    height: 5px;
     background-color: #07ade0;
     margin-top:8px;
 
@@ -126,13 +128,18 @@ header{
     grid-area: banner;
     display: flex;
     flex-direction: column;
+  width: 100%; 
+  max-width: 100%; 
     
 }
 .bannerImg {
-    max-height: 93vh;
+    
     object-fit: cover;
     display: flex;
     justify-content: center;
+  width: 100%; 
+  max-width: 100%;
+  height: 100%;
 }
 
 
@@ -146,6 +153,8 @@ header{
     color: rgb(255, 255, 255);
     z-index: 0;
     text-align: center;
+  width: 100%; 
+  max-width: 100%; 
 }
 
 
@@ -187,8 +196,8 @@ header{
 
         max-height: 900px;
         font-family: 'Playfair Display', serif;
-        font-weight: 900;
-        font-size: 40px;
+        font-weight: 500;
+        font-size: 20px;
         margin-top: 30px;
         margin-bottom: 30px;
         
@@ -205,3 +214,23 @@ header{
 
 
 }
+
+@media screen and (max-width: 1010px) {
+  .textBanner {
+    font-size: 2em;
+  }
+}
+@media screen and (max-width: 645px) {
+  .textBanner {
+    font-size: 18px;
+  }
+}
+
+
+@media screen and (max-width: 535px) {
+  .banner {
+    margin-top: 50px;
+  }
+}
+
+

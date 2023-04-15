@@ -1,17 +1,17 @@
 import './App.css'
-import Header from './components/Header/Header'; // <Header /> pensei em separar o menu do banner
-import Content from './components/Content/Content'; // <Content /> tambem da pra separar
-import Contact from './components/Contact/Contact'; // <Contact /> Primeiro Formulario
-import Footer from './components/Footer/Footer'; // <Footer /> Segundo Formulario
+import Header from './components/Header/Header'; // <Header />   (OK)
+import Content from './components/Content/Content'; // >>>>>>>>>>>>>>>> <Content /> (RESPONSIVIDADE BUGADA) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+import Contact from './components/Contact/Contact'; // <Contact /> Primeiro Formulario (OK)
+import Footer from './components/Footer/Footer'; // >>>>>>>>>>>>>>>>>>> <Footer /> Segundo Formulario  (RESPONSIVDADE BUGADA) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 export default function App() {
   return (
-    <main className='area'>  
+    <main className='area'>
       <Header />
       <Content />
       <Contact />
-      <Footer />
+      {/* <Footer /> */}
     </main>
-    
+
   )
 }

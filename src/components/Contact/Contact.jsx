@@ -19,9 +19,6 @@ function Contact() {
   const [mensagemValidated, setMensagemValidated] = useState(true);
   const [formsubmited, setFormSubmited] = useState(false);
   const [calendarSize, setCalendarSize] = useState('');
-
-
-
   function validateAppointment() {
     let validatedFunc = 0;
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -76,13 +73,13 @@ function Contact() {
       })
         .then(response => {
           console.log(response);
-          window.location.replace('http://localhost:5173/obrigado.html'); // trocar para https://clinicareverbere.com.br/obrigado.html ao subir para o servidor
+          window.location.replace('https://tp4-projetobloco.pedrohenriq1389.repl.co/obrigado.html');
         })
         .catch(error => console.log(error));
       console.log('formulario enviado')
     }
   }
-      
+
   function handleWindowResizeCalendar() {
 
     if (window.innerWidth > 800) {
@@ -100,12 +97,14 @@ function Contact() {
   }, []);
 
 
+
+
   return (
     <section className="contact_section" id="Contact">
       <div className="contact_container">
         <div className="greate_services_section_heading"><h1>Agende Sua Consulta</h1></div>
         <div className="contact_section_heading">
-          <p>Atendimentos de 9:00 às 22:00. <a href="https://calendar.google.com/calendar/u/0?cid=cGVkbWFjaGFkbzI3QGdtYWlsLmNvbQ" target="blank" class="hoverzin">Horários DISPONÍVEIS.</a></p>
+          <p>Atendimentos de 9:00 às 22:00. <a href="https://calendar.google.com/calendar/u/0?cid=cGVkbWFjaGFkbzI3QGdtYWlsLmNvbQ" target="blank" className="hoverzin">Horários DISPONÍVEIS.</a></p>
         </div>
         <form onSubmit={(event) => { event.preventDefault(); }}>
           <div className="data_form_fields">
@@ -139,7 +138,13 @@ function Contact() {
           <div className="message_form_fields">
             <textarea required className={mensagemValidated ? '' : 'deniedForm'} name="mensagem" onChange={(event) => { setMensagem(event.target.value) }} placeholder="Escreva aqui sua mensagem, incluindo Data e Hora que deseja marcar sua consulta. Em seguida, enviaremos uma mensagem no whatsapp para confirmar."></textarea>
           </div>
+
+          { /*<p>Se o <strong>Calendário</strong> estiver muito <strong>pequeno</strong> clique <a className='aqui' target={'_blank'} href='https://calendar.google.com/calendar/embed?src=pedmachado27%40gmail.com&ctz=America%2FSao_Paulo'>AQUI</a></p> */ }
+          <div className='responsiveIframe'>
           <iframe id='iframeCalendar' src={calendarSize} style={{ borderWidth: 0 }} width="800" height="600" frameBorder="0" scrolling="no"></iframe>
+          </div>
+
+
           <div className="form_submit_btn">
             {formsubmited ? <p>Formulário enviado!</p> : <button onClick={() => { validateAppointment() }} >ENVIAR</button>}
           </div>
