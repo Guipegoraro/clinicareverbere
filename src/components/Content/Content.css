@@ -28,44 +28,111 @@
   margin: 19px auto 0;
 }
 
-.instituition {
-  background-color: lightcoral;
-  border: 1px solid red;
+.imgInstituition {
+  background-color: green;
+  background-image: url("unnamed2.jpg"); /*PODE MUDAR A VONTADE, deixei as imgs que testei no componente*/
+
+ /* background-position: center;*/
+  object-fit: cover;
+  
+  
+  color: transparent;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  text-align: center;
+ 
 }
-.instituition_call {
-  background-color: lightblue;
-  border: 1px solid blue;
+.logoInst {
+  width: 30%;
+  padding: 25px;
+}
+.instituition_call h1{
+  
 }
 .instituiton_content {
-  background-color: lightgreen;
   border: 1px solid green;
   display: flex;
   flex-direction: row;
+  border-radius: 10px;
   justify-content: space-around;
+  color: #333333; 
 }
 .instituition_text_container {
-  background-color: lightgray;
-  border: 1px solid gray;
+  border: 1px solid green;
   text-align: center;
+  margin: 2px;
+  border-radius: 10px;
+  padding: 15px;
 }
 .instituiton_content h3 {
   text-align: center;
+  color: seagreen;
+  font-size: 25px;
+}
+.instituiton_content h3:after {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 3px;
+  background-color: seagreen;
+  margin: 2px auto 0;
+  margin-bottom: 15px;
 }
 .social_medias {
   display: flex;
   justify-content: space-around;
+  padding: 10px;
   align-items: center;
-  background-color: lightyellow;
-  border: 1px solid yellow;
+ 
+  color: #efefef;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.social_medias a {
+  color: #fff;
+  text-decoration: none;
+  padding-left: 20px;
+  
+}
+.social_medias a, .social_medias span {
+  width: 100%;
+  border: 1px solid;
+  text-align: center;
+  border-radius: 20px;
+  margin: 0 5px;
+  padding: 3px;
+  background-color: #07ade0;
+  
+}
+.social_medias a:hover, .social_medias span:hover{
+  color: red;
+  background-color:#efefef;
+  cursor: pointer;
+ 
+  
+ 
+}
+.test {
+  font-size: 20px;
+}
+.test2 {
+  font-size: 13px;
 }
 .main_team_cards {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  margin: 10px 0;
+  border: 1px solid #07ade0;
+  border-radius: 10px;
+  
 
 }
 .team_card {
-  padding: 0 15px;
+  padding: 0 25px;
+  border: 1px solid #07ade0;
+  border-radius: 10px;
+  margin: 2px;
 }
 .team_card h3 {
   text-align: center;
@@ -83,3 +150,71 @@
   width: 100%;
   object-fit: contain;
 } */
+
+
+@media (max-width: 887px) {
+  .test2 {
+    font-size: 14px;
+  }
+  .test {
+  font-size: 16px;
+}
+  .logoInst {
+  width: 50%;
+  padding: 25px;
+}
+  .imgInstituition {
+    background-position: bottom;
+  }
+}
+
+
+@media(max-width: 767px) {
+
+  .instituition_call h1 {
+    font-size: 28px;
+  }
+  .instituition_call h1:after {
+    width: 60px;
+  }
+
+  .instituiton_content {
+    flex-direction: column;
+  }
+  .social_medias {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .social_medias a{
+    padding-left: 0;
+  }
+  .social_medias a, .social_medias span {
+  
+  margin: 5px 5px;
+  
+}
+  .main_team_cards {
+    flex-direction: column;
+  }
+  .team_card {
+    border: 1px solid;
+    margin-top: 1%;
+  }
+}
+
+@media(max-width: 460px) {
+  .instituition_text_container {
+    font-size: 12px;
+  }
+
+  .social_medias {
+    font-size: 13px;
+  }
+  .team_card {
+    font-size: 12px;
+  }
+  .logoInst {
+  width: 70%;
+  padding: 25px;
+}
+}

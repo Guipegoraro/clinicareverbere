@@ -204,7 +204,7 @@ iframe {
   .data_form_fields {
     flex-direction: column !important;
   }
-F}
+}
 
 @media(max-width: 767px) {
 .data_form_fields {
@@ -217,7 +217,7 @@ F}
   margin: 0;
   }
   .greate_services_section_heading h1 {
-    font-size: 22px;
+    font-size: 28px;
   }
   .greate_services_section_heading h1:after {
     width: 60px;

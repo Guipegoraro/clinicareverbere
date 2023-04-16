@@ -117,9 +117,9 @@ function Contact() {
             <label htmlFor="profissional"></label>
             <select onChange={(event) => { setProfissional(event.target.value) }} id="profissional" name="profissional">
               <option value="livreEscolha">Escolha Por Mim</option>
-              <option value="Profissinal1">Profissional1</option>
-              <option value="Profissional2">Profissional2</option>
-              <option value="Profissional3">Profissional3</option>
+              <option value="Profissinal1">Gizeli Cunha</option>
+              <option value="Profissional2">Keli Godoi</option>
+              <option value="Profissional3">Ronilda Brusch</option>
             </select>
           </div>
           <div className="data_form_fields">

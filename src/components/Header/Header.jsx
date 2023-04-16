@@ -20,9 +20,9 @@ const Header = () => {
                         </label>
                         <ul className="content_nav">
                             <li><a href="#">HOME</a></li>
-                            <li><a href="#">INSTITUIÇÃO</a></li>
-                            <li><a href="#">CORPO CLÍNICO</a></li>
-                            <li><a href="#">AGENDE SUA CONSULTA</a></li>
+                            <li><a href="#content">INSTITUIÇÃO</a></li>
+                            <li><a href="#content2">CORPO CLÍNICO</a></li>
+                            <li><a href="#Contact">AGENDE SUA CONSULTA</a></li>
                             <li><a href="#">PARA PROFISSIONAIS</a></li>
                         </ul>
                     </nav>
