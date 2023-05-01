@@ -19,6 +19,11 @@ function Contact() {
   const [mensagemValidated, setMensagemValidated] = useState(true);
   const [formsubmited, setFormSubmited] = useState(false);
   const [calendarSize, setCalendarSize] = useState('');
+
+ //! refazer estados usando objetos para melhor organização conforme aula do armenio
+
+  
+  
   function validateAppointment() {
     let validatedFunc = 0;
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
