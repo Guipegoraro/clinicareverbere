@@ -3,85 +3,88 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function Contact() {
-  const [nome, setNome] = useState('');
-  const [idade, setIdade] = useState('');
-  const [email, setEmail] = useState('');
-  const [profissional, setProfissional] = useState('livre Escolha');
-  const [telefone, setTelefone] = useState('');
-  const [assunto, setAssunto] = useState('');
-  const [tipoDeAtendimento, setTipoDeAtendimento] = useState('');
-  const [mensagem, setMensagem] = useState('');
-  const [nomeValidated, setNomeValidated] = useState(true);
-  const [idadeValidated, setIdadeValidated] = useState(true);
-  const [emailValidated, setEmailValidated] = useState(true);
-  const [telefoneValidated, setTelefoneValidated] = useState(true);
-  const [tipoDeAtendimentoValidated, setTipoDeAtendimentoValidated] = useState(true);
-  const [mensagemValidated, setMensagemValidated] = useState(true);
   const [formsubmited, setFormSubmited] = useState(false);
   const [calendarSize, setCalendarSize] = useState('');
+  const [isFormInputValid, setisFormInputValid] = useState({
+    nome: true,
+    idade: true,
+    email: true,
+    telefone: true,
+    tipoDeAtendimento: true,
+    mensagem: true,
+  });
+  const [userForm, setUserForm] = useState({
+    nome: '',
+    idade: '',
+    email: '',
+    profissional: 'livre Escolha',
+    telefone: '',
+    assunto: '',
+    tipoDeAtendimento: '',
+    mensagem: '',
+  });
 
- //! refazer estados usando objetos para melhor organização conforme aula do armenio
 
-  
-  
+  function handleOnChange(event) {
+    setUserForm({ ...userForm, [event.target.name]: event.target.value });
+  };
+
   function validateAppointment() {
     let validatedFunc = 0;
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (regexEmail.test(String(email).toLowerCase())) {
+    if (regexEmail.test(String(userForm.email).toLowerCase())) {
       validatedFunc += 1;
-      setEmailValidated(true);
+      setisFormInputValid({ ...isFormInputValid, email: true });
     } else {
-      setEmailValidated(false);
-    }
-    if (nome.length > 3) {
+      setisFormInputValid({ ...isFormInputValid, email: false });
+    };
+    if (userForm.nome.length > 3) {
       validatedFunc += 1;
-      setNomeValidated(true);
+      setisFormInputValid({ ...isFormInputValid, nome: true });
     } else {
-      setNomeValidated(false);
-    }
-    if (mensagem.length > 0) {
+      setisFormInputValid({ ...isFormInputValid, nome: false });
+    };
+    if (userForm.mensagem.length > 0) {
       validatedFunc += 1;
-      setMensagemValidated(true);
+      setisFormInputValid({ ...isFormInputValid, mensagem: true });
     } else {
-      setMensagemValidated(false);
-    }
-    if (telefone.replace(/\D/g, "").length === 11) {
+      setisFormInputValid({ ...isFormInputValid, mensagem: false });
+    };
+    if (userForm.telefone.replace(/\D/g, "").length === 11) {
       validatedFunc += 1;
-      setTelefoneValidated(true);
+      setisFormInputValid({ ...isFormInputValid, telefone: true });
     } else {
-      setTelefoneValidated(false);
-    }
-    if (idade !== "") {
+      setisFormInputValid({ ...isFormInputValid, telefone: false });
+    };
+    if (userForm.idade !== "") {
       validatedFunc += 1;
-      setIdadeValidated(true);
+      setisFormInputValid({ ...isFormInputValid, idade: true });
     } else {
-      setIdadeValidated(false);
-    }
-    if (tipoDeAtendimento === "online" || tipoDeAtendimento === "presencial") {
+      setisFormInputValid({ ...isFormInputValid, idade: false });
+    };
+    if (userForm.tipoDeAtendimento === "online" || userForm.tipoDeAtendimento === "presencial") {
       validatedFunc += 1;
-      setTipoDeAtendimentoValidated(true);
+      setisFormInputValid({ ...isFormInputValid, tipoDeAtendimento: true });
     } else {
-      setTipoDeAtendimentoValidated(false);
-    }
+      setisFormInputValid({ ...isFormInputValid, tipoDeAtendimento: false });
+    };
     if (validatedFunc === 6) {
       setFormSubmited(true);
       axios.defaults.headers.post['Content-Type'] = 'application/json';
       axios.post('https://formsubmit.co/ajax/gui.peg@hotmail.com', {
-        nome: nome,
-        telefone: telefone,
-        email: email,
-        idade: idade,
-        profissional: profissional,
-        tipoDeAtendimento: tipoDeAtendimento,
-        assunto: assunto,
-        mensagem: mensagem
+        nome: userForm.nome,
+        telefone: userForm.telefone,
+        email: userForm.email,
+        idade: userForm.idade,
+        profissional: userForm.profissional,
+        tipoDeAtendimento: userForm.tipoDeAtendimento,
+        assunto: userForm.assunto,
+        mensagem: userForm.mensagem
       })
         .then(response => {
-          console.log(response);
           window.location.replace('https://tp4-projetobloco.pedrohenriq1389.repl.co/obrigado.html');
         })
-        .catch(error => console.log(error));
-      console.log('formulario enviado')
+        .catch(error => {console.log(error); alert('Erro ao enviar formulário, tente novamente mais tarde.');});
     }
   }
 
@@ -92,15 +95,14 @@ function Contact() {
     } else {
 
       setCalendarSize('https://calendar.google.com/calendar/embed?height=300&wkst=2&bgcolor=%23C0CA33&ctz=America%2FSao_Paulo&mode=AGENDA&showTz=0&showCalendars=0&showTabs=0&showPrint=0&showDate=0&showNav=1&showTitle=0&src=cGVkbWFjaGFkbzI3QGdtYWlsLmNvbQ&color=%23039BE5');
-    }
-  }
+    };
+  };
 
   useEffect(() => {
     window.addEventListener('resize', handleWindowResizeCalendar);
     handleWindowResizeCalendar();
     return () => window.removeEventListener('resize', handleWindowResizeCalendar);
   }, []);
-
 
 
 
@@ -114,13 +116,13 @@ function Contact() {
         <form onSubmit={(event) => { event.preventDefault(); }}>
           <div className="data_form_fields">
             <label htmlFor="text"></label>
-            <input type="text" className={nomeValidated ? '' : 'deniedForm'} onChange={(event) => { setNome(event.target.value) }} name="Nome" id="text" required placeholder="Nome" />
+            <input type="text" className={isFormInputValid.nome ? '' : 'deniedForm'} onChange={(event) => handleOnChange(event)} name="nome" id="text" required placeholder="Nome" />
             <label htmlFor="idade"></label>
-            <input type="number" className={idadeValidated ? '' : 'deniedForm'} onChange={(event) => { setIdade(event.target.value) }} name="idade" id="idade" required placeholder="Idade" />
+            <input type="number" className={isFormInputValid.idade ? '' : 'deniedForm'} onChange={(event) => handleOnChange(event)} name="idade" id="idade" required placeholder="Idade" />
             <label htmlFor="email"></label>
-            <input type="email" className={emailValidated ? '' : 'deniedForm'} onChange={(event) => { setEmail(event.target.value) }} name="email" id="email" required placeholder="Email" />
+            <input type="email" className={isFormInputValid.email ? '' : 'deniedForm'} onChange={(event) => handleOnChange(event)} name="email" id="email" required placeholder="Email" />
             <label htmlFor="profissional"></label>
-            <select onChange={(event) => { setProfissional(event.target.value) }} id="profissional" name="profissional">
+            <select onChange={(event) => handleOnChange(event)} id="profissional" name="profissional">
               <option value="livreEscolha">Escolha Por Mim</option>
               <option value="Profissinal1">Gizeli Cunha</option>
               <option value="Profissional2">Keli Godoi</option>
@@ -129,11 +131,11 @@ function Contact() {
           </div>
           <div className="data_form_fields">
             <label htmlFor="number"></label>
-            <input type="number" className={telefoneValidated ? '' : 'deniedForm'} required onChange={(event) => { setTelefone(event.target.value) }} name="number" id="number" placeholder="Telefone" />
+            <input type="number" className={isFormInputValid.telefone ? '' : 'deniedForm'} required onChange={(event) => handleOnChange(event)} name="telefone" id="number" placeholder="Telefone" />
             <label htmlFor="text"></label>
-            <input type="text" name="assunto" onChange={(event) => { setAssunto(event.target.value) }} id="assunto" required placeholder="Assunto" />
+            <input type="text" name="assunto" onChange={(event) => handleOnChange(event)} id="assunto" required placeholder="Assunto" />
             <label htmlFor="tipo-de-atendimento"></label>
-            <select id="tipo-de-atendimento" className={tipoDeAtendimentoValidated ? '' : 'deniedForm'} onChange={(event) => { setTipoDeAtendimento(event.target.value) }} name="tipo-de-atendimento">
+            <select id="tipo-de-atendimento" className={isFormInputValid.tipoDeAtendimento ? '' : 'deniedForm'} onChange={(event) => handleOnChange(event)} name="tipoDeAtendimento">
               <option value="selecione">Selecione uma opção</option>
               <option value="online">Consulta Online</option>
               <option value="presencial">Consulta Presencial</option>
@@ -141,14 +143,13 @@ function Contact() {
             <input type="hidden" name="_next" value="https://tp4-projetobloco.pedrohenriq1389.repl.co/" />
           </div>
           <div className="message_form_fields">
-            <textarea required className={mensagemValidated ? '' : 'deniedForm'} name="mensagem" onChange={(event) => { setMensagem(event.target.value) }} placeholder="Escreva aqui sua mensagem, incluindo Data e Hora que deseja marcar sua consulta. Em seguida, enviaremos uma mensagem no whatsapp para confirmar."></textarea>
+            <textarea required className={isFormInputValid.mensagem ? '' : 'deniedForm'} name="mensagem" onChange={(event) => handleOnChange(event)} placeholder="Escreva aqui sua mensagem, incluindo Data e Hora que deseja marcar sua consulta. Em seguida, enviaremos uma mensagem no whatsapp para confirmar."></textarea>
           </div>
 
-          { /*<p>Se o <strong>Calendário</strong> estiver muito <strong>pequeno</strong> clique <a className='aqui' target={'_blank'} href='https://calendar.google.com/calendar/embed?src=pedmachado27%40gmail.com&ctz=America%2FSao_Paulo'>AQUI</a></p> */ }
+          { /*<p>Se o <strong>Calendário</strong> estiver muito <strong>pequeno</strong> clique <a className='aqui' target={'_blank'} href='https://calendar.google.com/calendar/embed?src=pedmachado27%40gmail.com&ctz=America%2FSao_Paulo'>AQUI</a></p> */}
           <div className='responsiveIframe'>
-          <iframe id='iframeCalendar' src={calendarSize} style={{ borderWidth: 0 }} width="800" height="600" frameBorder="0" scrolling="no"></iframe>
+            <iframe id='iframeCalendar' src={calendarSize} style={{ borderWidth: 0 }} width="800" height="600" frameBorder="0" scrolling="no"></iframe>
           </div>
-
 
           <div className="form_submit_btn">
             {formsubmited ? <p>Formulário enviado!</p> : <button onClick={() => { validateAppointment() }} >ENVIAR</button>}
