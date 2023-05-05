@@ -3,42 +3,25 @@ Site da clinica de psicologia reverbere - trabalho bloco 1 semestre 2 engenharia
 # Link Replit do projeto
 https://replit.com/@GuilhermeCunh16/clinicareverbere
 
-# NavBar:
-Home
-A instituição
-Corpo Clínico 
-Agende sua consulta
-(eventos)
-Para Profissionais
 
-# começo: 
-endereço telefone e redes acima da navbar
-navbar
-hero com a apresentação da instituição, contendo o quem somos, valores e missão.
-
-corpo clinico:
-texto sobre cada funcionario, 3 seções podendo ser escalavel
-NÃO TERÁ FOTO DOS FUNCIONARIOS
-
-agende sua consulta:
-formulário e demonstrar o calendario
-
-# formulário:
-Nome*
-Telefone*
-Email*
-Idade do paciente*
-Profissional Selecionada
-tipo de atendimento (online ou presencial)*
-Mensagem:
+# Fazer:
 
 rodapé com contatos endereço formulario de contato e mapas
 
-# Material para pedir:
-quem somos
-missão
-valores
-texto sobre cada funcionario
+# IDENTIDADE VISUAL:
+
+FONTES:
+Storystone regular para a parte da logo onde diz "reverbere"
+link: https://www.dafont.com/storystone.font
+
+Playfair Display para a parte da logo onde diz "clinica de psicologia"
+link: https://fonts.google.com/specimen/Playfair+Display
+
+CORES:
+principal: #07ade0 (azul)
+secundária: #7cc537 (verde)
+terciária: #777777 (cinza)
+
 
 # texto sobre funcionarios
 Gizeli Cunha
@@ -79,10 +62,6 @@ CRP 07/21926
 – Atendimentos voltados a pacientes que sofrem de Transtorno Obsessivo-Compulsivo (TOC), Transtornos de Humor (depressão e bipolaridade), Fobias (específicas, social, agorafobia) e Transtornos Alimentares.
 
 Atende crianças, adolescentes e adultos.
-
-
-# TODO
-adicionar "letras miudas" sobre LGPD nos formulários
 
 
 # IDENTIDADE VISUAL:
