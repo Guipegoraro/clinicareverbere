@@ -5,6 +5,9 @@ on:
     branches:
       - main
 jobs:
+permissions:
+      contents: write  # To push a branch 
+      pull-requests: write  # To create a PR from that branch
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
