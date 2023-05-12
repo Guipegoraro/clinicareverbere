@@ -3,7 +3,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function Contact() {
-  const [formsubmited, setFormSubmited] = useState(false);
+  const [formsubmited, setFormSubmited] = useState({
+    withSuccess: false,
+    withError: false,
+  });
   const [calendarSize, setCalendarSize] = useState('');
   const [isFormInputValid, setisFormInputValid] = useState({
     nome: true,
@@ -69,7 +72,7 @@ function Contact() {
       setisFormInputValid({ ...isFormInputValid, tipoDeAtendimento: false });
     };
     if (validatedFunc === 6) {
-      setFormSubmited(true);
+
       axios.defaults.headers.post['Content-Type'] = 'application/json';
       axios.post('https://formsubmit.co/ajax/gui.peg@hotmail.com', {
         nome: userForm.nome,
@@ -81,9 +84,23 @@ function Contact() {
         assunto: userForm.assunto,
         mensagem: userForm.mensagem
       })
-        .then(window.location.replace('https://tp4-projetobloco.pedrohenriq1389.repl.co/obrigado.html'))
-        .catch(error => {console.log(error); alert('Erro ao enviar formulário, tente novamente mais tarde.');
-      alert("Erro ao enviar formulário! entre em contato para marcar sua consulta, pedimos desculpa pelo transtorno!")});
+        .then((response) => {
+          if (response.status === 200) {
+            window.location.replace('https://tp4-projetobloco.pedrohenriq1389.repl.co/obrigado.html');
+            setFormSubmited({
+              withSuccess: true,
+              withError: false,
+            });
+          }
+        })
+        .catch(error => {
+          console.log(error); alert('Erro ao enviar formulário, tente novamente mais tarde.');
+          alert("Erro ao enviar formulário! entre em contato para marcar sua consulta, pedimos desculpa pelo transtorno!")
+          setFormSubmited({
+            withSuccess: false,
+            withError: true,
+          });
+        });
     }
   }
 
@@ -150,8 +167,10 @@ function Contact() {
             <iframe id='iframeCalendar' src={calendarSize} style={{ borderWidth: 0 }} width="800" height="600" frameBorder="0" scrolling="no"></iframe>
           </div>
 
+          <p style={{ margin: "0 auto", textAlign: "center" }}>Lembre de incluir <b>data e hora da consulta</b> na sua mensagem! Enviaremos confirmação por WhatsApp em até 1 dia útil</p>
+          {formsubmited.withError ? <h4 style={{ color: "red" }}>Ocorreu um erro interno ao enviar o formulário! entre em contato pelo número xx xxxxx-xxxx para marcar sua consulta.</h4> : ''}
           <div className="form_submit_btn">
-            {formsubmited ? <p>Formulário enviado!</p> : <button onClick={() => { validateAppointment() }} >ENVIAR</button>}
+            {formsubmited.withSuccess ? <p>Formulário enviado!</p> : <button onClick={() => { validateAppointment() }} >ENVIAR</button>}
           </div>
         </form>
       </div>
