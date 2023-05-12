@@ -1,4 +1,8 @@
-import './App.css'
+import React from "react";
+import './App.css';
+import './css/Style.css';
+
+
 import Header from './components/Header/Header'; // <Header />   (OK)
 import Content from './components/Content/Content'; // >>>>>>>>>>>>>>>> <Content /> (RESPONSIVIDADE BUGADA) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 import Contact from './components/Contact/Contact'; // <Contact /> Primeiro Formulario (OK)

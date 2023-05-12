@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+
 .content {
   display: grid;
   grid-area: content;
-  background-color: #f5f5f5;
+  background-color: #fff;
   padding: 20px;
   margin: 20px;
 }
+
 .instituition_call {
   display: flex;
   width: 100%;
@@ -12,139 +15,208 @@
   justify-content: center;
   margin-bottom: 60px;
 }
+
 .instituition_call h1 {
-  font-size: 48px;
+  /* font-size: 48px;
   font-weight: bold;
-  color: #07ade0;
+  color: #07ade0; */
+  font: var(--font-title-h1);
+  color: var(--primary-color);
   position: relative;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
+
 .instituition_call h1:after {
   display: block;
   content: "";
   width: 100px;
   height: 5px;
-  background-color: #07ade0;
+  background-color: var(--primary-color);
   margin: 19px auto 0;
 }
 
 .imgInstituition {
-  background-color: green;
+  background-color: var(--secundary-color);
   background-image: url("unnamed2.jpg"); /*PODE MUDAR A VONTADE, deixei as imgs que testei no componente*/
 
  /* background-position: center;*/
   object-fit: cover;
-  
-  
   color: transparent;
   margin-bottom: 10px;
   border-radius: 15px;
   text-align: center;
  
 }
+
 .logoInst {
   width: 30%;
   padding: 25px;
 }
-.instituition_call h1{
-  
-}
+
 .instituiton_content {
-  border: 1px solid green;
   display: flex;
   flex-direction: row;
   border-radius: 10px;
   justify-content: space-around;
   color: #333333; 
+  
 }
+
 .instituition_text_container {
-  border: 1px solid green;
   text-align: center;
   margin: 2px;
   border-radius: 10px;
-  padding: 15px;
+  padding: 25px;
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
 }
+
 .instituiton_content h3 {
+  font: var(--font-title-h3);
   text-align: center;
-  color: seagreen;
-  font-size: 25px;
+  color: #efefef;
+  margin-bottom: 10px;
+  /* font-size: 25px; */
 }
-.instituiton_content h3:after {
-  display: block;
-  content: "";
-  width: 100%;
-  height: 3px;
-  background-color: seagreen;
-  margin: 2px auto 0;
-  margin-bottom: 15px;
-}
-.social_medias {
+
+
+.social_medias, .social_medias a, .test {
   display: flex;
   justify-content: space-around;
   padding: 10px;
   align-items: center;
- 
   color: #efefef;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   margin-top: 10px;
+  width: 100%;
 }
+
 .social_medias a {
-  color: #fff;
-  text-decoration: none;
+  color: var(--color-white);
   padding-left: 20px;
-  
+  /* display:flex;*/
+  justify-content:center;
+  align-items:center; 
 }
+
 .social_medias a, .social_medias span {
   width: 100%;
-  border: 1px solid;
+  border: 1px solid var(--primary-color);
   text-align: center;
   border-radius: 20px;
   margin: 0 5px;
   padding: 3px;
-  background-color: #07ade0;
+  background-color:var(--primary-color);
   
 }
 .social_medias a:hover, .social_medias span:hover{
-  color: red;
+  --color-hover: red;
+  border: 1px solid var(--color-hover);
+  color: var(--color-hover);
   background-color:#efefef;
-  cursor: pointer;
- 
-  
- 
+  cursor: pointer; 
 }
+
+.social_medias a, .test{
+  justify-content:center;
+  gap: 5px;
+}
+
 .test {
   font-size: 20px;
 }
-.test2 {
-  font-size: 13px;
+.endereco {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: 40px;
+  margin-bottom: 10px;
+  
+  
 }
+
+.test2 {
+  font-size: 18px;
+  text-align:center;
+ /* background-color: var(--primary-color); */
+  color: #d60000;
+  padding: 5px;
+  border-radius: 3px;
+  width: 90%;
+
+
+  
+  
+}
+/*.sectionCorpo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+/*.corpo {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 5px 5px 8px #545454; 
+  padding: 10px;
+  width: 50%;
+  
+} */
+
+.sectionCorpo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+.corpo {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 0 0 10px 0;
+  margin-bottom: 2px;
+  width: 80%;
+  
+  
+  
+}
+
 .main_team_cards {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
-  margin: 10px 0;
-  border: 1px solid #07ade0;
+  margin: 30px 0 10px 0;
   border-radius: 10px;
+  z-index: 0;
   
+}
 
-}
-.team_card {
-  padding: 0 25px;
-  border: 1px solid #07ade0;
+.team_card{
+  padding: 15px 25px;
+  margin: 1px 5px 20px 1px;  
   border-radius: 10px;
-  margin: 2px;
+  width: 100%;
+  background-color: #fcfcfc;
+  box-shadow: 4px 3px 12px #545454;
+  
 }
+
+
 .team_card h3 {
   text-align: center;
-  color: #07ade0;
+  color:var(--primary-color);
   padding: 10px;
+  font-size: 1.5em;
 }
+
 .team_card ul {
   list-style: none;
+  
 }
+
+.team_card ul li {
+  font-family: 'Libre Baskerville', serif;
+}
+
 .team_card ul span {
   font-weight: bold;
-  color: #07ade0;
+  color:var(--primary-color);
 }
 /* .content img {
   width: 100%;
@@ -156,13 +228,16 @@
   .test2 {
     font-size: 14px;
   }
+  
   .test {
-  font-size: 16px;
-}
+    font-size: 16px;
+  }
+  
   .logoInst {
-  width: 50%;
-  padding: 25px;
-}
+    width: 50%;
+    padding: 25px;
+  }
+  
   .imgInstituition {
     background-position: bottom;
   }
@@ -170,10 +245,10 @@
 
 
 @media(max-width: 767px) {
-
   .instituition_call h1 {
     font-size: 28px;
   }
+  
   .instituition_call h1:after {
     width: 60px;
   }
@@ -181,24 +256,26 @@
   .instituiton_content {
     flex-direction: column;
   }
+  
   .social_medias {
     flex-direction: column;
     justify-content: flex-start;
   }
+  
   .social_medias a{
     padding-left: 0;
   }
   .social_medias a, .social_medias span {
+    margin: 5px 5px;
+  }
   
-  margin: 5px 5px;
-  
-}
   .main_team_cards {
     flex-direction: column;
   }
+  
   .team_card {
-    border: 1px solid;
     margin-top: 1%;
+    width: auto;
   }
 }
 
@@ -210,11 +287,22 @@
   .social_medias {
     font-size: 13px;
   }
+  
   .team_card {
     font-size: 12px;
   }
+  
   .logoInst {
-  width: 70%;
-  padding: 25px;
+    width: 70%;
+    padding: 25px;
+  }
+  .endereco {
+    margin-bottom: 40px;
+  }
 }
+
+@media(max-width: 320px) {
+  .endereco {
+    margin-bottom: 55px;
+  }
 }

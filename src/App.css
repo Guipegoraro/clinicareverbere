@@ -5,14 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Playfair Display', serif;
-  
-    
 }
-
-html {
-  
-}
-
 
 .area {
   display: grid;
@@ -24,3 +17,4 @@ html {
   grid-template-columns: 1fr; /* define uma coluna de largura 1 fração de espaço livre */
   grid-template-rows: auto auto auto auto; /* define 4 linhas de altura automática */
 }
+

@@ -1,0 +1,23 @@
+:root{
+  --color-white: #ffffff;
+  --primary-color: #07ade0;
+  --secundary-color: #008800;
+  --secundary-color-ton: #2E8B57;
+  --border-primary-color:1px solid var(--primary-color);
+  --border-secundary-color:1px solid var(--secundary-color);
+  --font-title-h1: 900 3em 'Playfair Display', serif;
+  --font-title-h3: 900 1.5625em 'Playfair Display', serif;
+}
+
+ul,li{
+  margin:0;
+  padding:0;
+}
+
+ul{
+  list-style:none;
+}
+
+a{
+  text-decoration:none;
+}
