@@ -120,7 +120,7 @@ function Contact() {
             <input type="number" className={isFormInputValid.idade ? '' : 'deniedForm'} onChange={(event) => handleOnChange(event)} name="idade" id="idade" required placeholder="Idade" />
             <label htmlFor="email"></label>
             <input type="email" className={isFormInputValid.email ? '' : 'deniedForm'} onChange={(event) => handleOnChange(event)} name="email" id="email" required placeholder="Email" />
-            <label htmlFor="profissional"></label>
+            <label htmlFor="profissional">Profissional que irá lhe atender:</label>
             <select onChange={(event) => handleOnChange(event)} id="profissional" name="profissional">
               <option value="livreEscolha">Escolha Por Mim</option>
               <option value="Profissinal1">Gizeli Cunha</option>
@@ -133,7 +133,7 @@ function Contact() {
             <input type="number" className={isFormInputValid.telefone ? '' : 'deniedForm'} required onChange={(event) => handleOnChange(event)} name="telefone" id="number" placeholder="Telefone" />
             <label htmlFor="text"></label>
             <input type="text" name="assunto" onChange={(event) => handleOnChange(event)} id="assunto" required placeholder="Assunto" />
-            <label htmlFor="tipo-de-atendimento"></label>
+            <label htmlFor="tipo-de-atendimento">Método de atendimento:</label>
             <select id="tipo-de-atendimento" className={isFormInputValid.tipoDeAtendimento ? '' : 'deniedForm'} onChange={(event) => handleOnChange(event)} name="tipoDeAtendimento">
               <option value="selecione">Selecione uma opção</option>
               <option value="online">Consulta Online</option>
