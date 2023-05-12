@@ -81,10 +81,9 @@ function Contact() {
         assunto: userForm.assunto,
         mensagem: userForm.mensagem
       })
-        .then(response => {
-          window.location.replace('https://tp4-projetobloco.pedrohenriq1389.repl.co/obrigado.html');
-        })
-        .catch(error => {console.log(error); alert('Erro ao enviar formulário, tente novamente mais tarde.');});
+        .then(window.location.replace('https://tp4-projetobloco.pedrohenriq1389.repl.co/obrigado.html'))
+        .catch(error => {console.log(error); alert('Erro ao enviar formulário, tente novamente mais tarde.');
+      alert("Erro ao enviar formulário! entre em contato para marcar sua consulta, pedimos desculpa pelo transtorno!")});
     }
   }
 
