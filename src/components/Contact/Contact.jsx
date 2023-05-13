@@ -8,7 +8,7 @@ function Contact() {
     withError: false,
   });
   const [calendarSize, setCalendarSize] = useState('');
-  const [isFormInputValid, setisFormInputValid] = useState({
+  const [isFormInputValid, setIsFormInputValid] = useState({
     nome: true,
     idade: true,
     email: true,
@@ -27,7 +27,6 @@ function Contact() {
     mensagem: '',
   });
 
-
   function handleOnChange(event) {
     setUserForm({ ...userForm, [event.target.name]: event.target.value });
   };
@@ -37,46 +36,51 @@ function Contact() {
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (regexEmail.test(String(userForm.email).toLowerCase())) {
       validatedFunc += 1;
-      setisFormInputValid({ ...isFormInputValid, email: true });
+      setIsFormInputValid(prevState => ({ ...prevState, email: true }));
     } else {
-      setisFormInputValid({ ...isFormInputValid, email: false });
+      setIsFormInputValid(prevState => ({ ...prevState, email: false }));
     };
+  
     if (userForm.nome.length > 3) {
       validatedFunc += 1;
-      setisFormInputValid({ ...isFormInputValid, nome: true });
+      setIsFormInputValid(prevState => ({ ...prevState, nome: true }));
     } else {
-      setisFormInputValid({ ...isFormInputValid, nome: false });
+      setIsFormInputValid(prevState => ({ ...prevState, nome: false }));
     };
+  
     if (userForm.mensagem.length > 0) {
       validatedFunc += 1;
-      setisFormInputValid({ ...isFormInputValid, mensagem: true });
+      setIsFormInputValid(prevState => ({ ...prevState, mensagem: true }));
     } else {
-      setisFormInputValid({ ...isFormInputValid, mensagem: false });
+      setIsFormInputValid(prevState => ({ ...prevState, mensagem: false }));
     };
-    if (userForm.telefone.replace(/\D/g, "").length === 11) {
+  
+    if (userForm.telefone.replace(/[^0-9]+/g, '').length === 11) {
       validatedFunc += 1;
-      setisFormInputValid({ ...isFormInputValid, telefone: true });
+      setIsFormInputValid(prevState => ({ ...prevState, telefone: true }));
     } else {
-      setisFormInputValid({ ...isFormInputValid, telefone: false });
+      setIsFormInputValid(prevState => ({ ...prevState, telefone: false }));
     };
+  
     if (userForm.idade !== "") {
       validatedFunc += 1;
-      setisFormInputValid({ ...isFormInputValid, idade: true });
+      setIsFormInputValid(prevState => ({ ...prevState, idade: true }));
     } else {
-      setisFormInputValid({ ...isFormInputValid, idade: false });
+      setIsFormInputValid(prevState => ({ ...prevState, idade: false }));
     };
+  
     if (userForm.tipoDeAtendimento === "online" || userForm.tipoDeAtendimento === "presencial") {
       validatedFunc += 1;
-      setisFormInputValid({ ...isFormInputValid, tipoDeAtendimento: true });
+      setIsFormInputValid(prevState => ({ ...prevState, tipoDeAtendimento: true }));
     } else {
-      setisFormInputValid({ ...isFormInputValid, tipoDeAtendimento: false });
+      setIsFormInputValid(prevState => ({ ...prevState, tipoDeAtendimento: false }));
     };
     if (validatedFunc === 6) {
 
       axios.defaults.headers.post['Content-Type'] = 'application/json';
       axios.post('https://formsubmit.co/ajax/gui.peg@hotmail.com', {
         nome: userForm.nome,
-        telefone: userForm.telefone,
+        telefone: userForm.telefone.replace(/[^0-9]+/g, ''),
         email: userForm.email,
         idade: userForm.idade,
         profissional: userForm.profissional,
@@ -147,9 +151,9 @@ function Contact() {
           </div>
           <div className="data_form_fields">
             <label htmlFor="number"></label>
-            <input type="number" className={isFormInputValid.telefone ? '' : 'deniedForm'} required onChange={(event) => handleOnChange(event)} name="telefone" id="number" placeholder="Telefone" />
+            <input type="text" className={isFormInputValid.telefone ? '' : 'deniedForm'} required onChange={(event) => handleOnChange(event)} name="telefone" id="number" placeholder="Telefone" />
             <label htmlFor="text"></label>
-            <input type="text" name="assunto" onChange={(event) => handleOnChange(event)} id="assunto" required placeholder="Assunto" />
+            <input type="text" name="assunto" onChange={(event) => handleOnChange(event)} id="assunto" placeholder="Assunto" />
             <label htmlFor="tipo-de-atendimento">Método de atendimento:</label>
             <select id="tipo-de-atendimento" className={isFormInputValid.tipoDeAtendimento ? '' : 'deniedForm'} onChange={(event) => handleOnChange(event)} name="tipoDeAtendimento">
               <option value="selecione">Selecione uma opção</option>
