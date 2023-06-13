@@ -3,9 +3,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function Contact() {
-  const [formsubmited, setFormSubmited] = useState(false);
+  const [formsubmited, setFormSubmited] = useState({
+    withSuccess: false,
+    withError: false,
+  });
   const [calendarSize, setCalendarSize] = useState('');
-  const [isFormInputValid, setisFormInputValid] = useState({
+  const [isFormInputValid, setIsFormInputValid] = useState({
     nome: true,
     idade: true,
     email: true,
@@ -24,7 +27,6 @@ function Contact() {
     mensagem: '',
   });
 
-
   function handleOnChange(event) {
     setUserForm({ ...userForm, [event.target.name]: event.target.value });
   };
@@ -34,46 +36,51 @@ function Contact() {
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (regexEmail.test(String(userForm.email).toLowerCase())) {
       validatedFunc += 1;
-      setisFormInputValid({ ...isFormInputValid, email: true });
+      setIsFormInputValid(prevState => ({ ...prevState, email: true }));
     } else {
-      setisFormInputValid({ ...isFormInputValid, email: false });
+      setIsFormInputValid(prevState => ({ ...prevState, email: false }));
     };
+  
     if (userForm.nome.length > 3) {
       validatedFunc += 1;
-      setisFormInputValid({ ...isFormInputValid, nome: true });
+      setIsFormInputValid(prevState => ({ ...prevState, nome: true }));
     } else {
-      setisFormInputValid({ ...isFormInputValid, nome: false });
+      setIsFormInputValid(prevState => ({ ...prevState, nome: false }));
     };
+  
     if (userForm.mensagem.length > 0) {
       validatedFunc += 1;
-      setisFormInputValid({ ...isFormInputValid, mensagem: true });
+      setIsFormInputValid(prevState => ({ ...prevState, mensagem: true }));
     } else {
-      setisFormInputValid({ ...isFormInputValid, mensagem: false });
+      setIsFormInputValid(prevState => ({ ...prevState, mensagem: false }));
     };
-    if (userForm.telefone.replace(/\D/g, "").length === 11) {
+  
+    if (userForm.telefone.replace(/[^0-9]+/g, '').length === 11) {
       validatedFunc += 1;
-      setisFormInputValid({ ...isFormInputValid, telefone: true });
+      setIsFormInputValid(prevState => ({ ...prevState, telefone: true }));
     } else {
-      setisFormInputValid({ ...isFormInputValid, telefone: false });
+      setIsFormInputValid(prevState => ({ ...prevState, telefone: false }));
     };
+  
     if (userForm.idade !== "") {
       validatedFunc += 1;
-      setisFormInputValid({ ...isFormInputValid, idade: true });
+      setIsFormInputValid(prevState => ({ ...prevState, idade: true }));
     } else {
-      setisFormInputValid({ ...isFormInputValid, idade: false });
+      setIsFormInputValid(prevState => ({ ...prevState, idade: false }));
     };
+  
     if (userForm.tipoDeAtendimento === "online" || userForm.tipoDeAtendimento === "presencial") {
       validatedFunc += 1;
-      setisFormInputValid({ ...isFormInputValid, tipoDeAtendimento: true });
+      setIsFormInputValid(prevState => ({ ...prevState, tipoDeAtendimento: true }));
     } else {
-      setisFormInputValid({ ...isFormInputValid, tipoDeAtendimento: false });
+      setIsFormInputValid(prevState => ({ ...prevState, tipoDeAtendimento: false }));
     };
     if (validatedFunc === 6) {
-      setFormSubmited(true);
+
       axios.defaults.headers.post['Content-Type'] = 'application/json';
       axios.post('https://formsubmit.co/ajax/gui.peg@hotmail.com', {
         nome: userForm.nome,
-        telefone: userForm.telefone,
+        telefone: userForm.telefone.replace(/[^0-9]+/g, ''),
         email: userForm.email,
         idade: userForm.idade,
         profissional: userForm.profissional,
@@ -81,10 +88,23 @@ function Contact() {
         assunto: userForm.assunto,
         mensagem: userForm.mensagem
       })
-        .then(response => {
-          window.location.replace('https://tp4-projetobloco.pedrohenriq1389.repl.co/obrigado.html');
+        .then((response) => {
+          if (response.status === 200) {
+            window.location.replace('https://tp4-projetobloco.pedrohenriq1389.repl.co/obrigado.html');
+            setFormSubmited({
+              withSuccess: true,
+              withError: false,
+            });
+          }
         })
-        .catch(error => {console.log(error); alert('Erro ao enviar formulário, tente novamente mais tarde.');});
+        .catch(error => {
+          console.log(error); alert('Erro ao enviar formulário, tente novamente mais tarde.');
+          alert("Erro ao enviar formulário! entre em contato para marcar sua consulta, pedimos desculpa pelo transtorno!")
+          setFormSubmited({
+            withSuccess: false,
+            withError: true,
+          });
+        });
     }
   }
 
@@ -121,7 +141,7 @@ function Contact() {
             <input type="number" className={isFormInputValid.idade ? '' : 'deniedForm'} onChange={(event) => handleOnChange(event)} name="idade" id="idade" required placeholder="Idade" />
             <label htmlFor="email"></label>
             <input type="email" className={isFormInputValid.email ? '' : 'deniedForm'} onChange={(event) => handleOnChange(event)} name="email" id="email" required placeholder="Email" />
-            <label htmlFor="profissional"></label>
+            <label htmlFor="profissional">Profissional que irá lhe atender:</label>
             <select onChange={(event) => handleOnChange(event)} id="profissional" name="profissional">
               <option value="livreEscolha">Escolha Por Mim</option>
               <option value="Profissinal1">Gizeli Cunha</option>
@@ -131,10 +151,10 @@ function Contact() {
           </div>
           <div className="data_form_fields">
             <label htmlFor="number"></label>
-            <input type="number" className={isFormInputValid.telefone ? '' : 'deniedForm'} required onChange={(event) => handleOnChange(event)} name="telefone" id="number" placeholder="Telefone" />
+            <input type="text" className={isFormInputValid.telefone ? '' : 'deniedForm'} required onChange={(event) => handleOnChange(event)} name="telefone" id="number" placeholder="Telefone" />
             <label htmlFor="text"></label>
-            <input type="text" name="assunto" onChange={(event) => handleOnChange(event)} id="assunto" required placeholder="Assunto" />
-            <label htmlFor="tipo-de-atendimento"></label>
+            <input type="text" name="assunto" onChange={(event) => handleOnChange(event)} id="assunto" placeholder="Assunto" />
+            <label htmlFor="tipo-de-atendimento">Método de atendimento:</label>
             <select id="tipo-de-atendimento" className={isFormInputValid.tipoDeAtendimento ? '' : 'deniedForm'} onChange={(event) => handleOnChange(event)} name="tipoDeAtendimento">
               <option value="selecione">Selecione uma opção</option>
               <option value="online">Consulta Online</option>
@@ -151,8 +171,10 @@ function Contact() {
             <iframe id='iframeCalendar' src={calendarSize} style={{ borderWidth: 0 }} width="800" height="600" frameBorder="0" scrolling="no"></iframe>
           </div>
 
+          <p style={{ margin: "0 auto", textAlign: "center" }}>Lembre de incluir <b>data e hora da consulta</b> na sua mensagem! Enviaremos confirmação por WhatsApp em até 1 dia útil</p>
+          {formsubmited.withError ? <h4 style={{ color: "red" }}>Ocorreu um erro interno ao enviar o formulário! entre em contato pelo número xx xxxxx-xxxx para marcar sua consulta.</h4> : ''}
           <div className="form_submit_btn">
-            {formsubmited ? <p>Formulário enviado!</p> : <button onClick={() => { validateAppointment() }} >ENVIAR</button>}
+            {formsubmited.withSuccess ? <p>Formulário enviado!</p> : <button onClick={() => { validateAppointment() }} >ENVIAR</button>}
           </div>
         </form>
       </div>

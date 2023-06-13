@@ -6,24 +6,22 @@
 
 .grid-header {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-template-areas: 
-    "nav nav nav"  
-    "banner banner banner";
+    "nav"  
+    "banner";
 }
 
 header{
-
     position: fixed;
     top: 0;
     z-index: 1;
     width: 100%;
-    background-color: #fff;
+    background-color: var(--color-white);
 
 }
 
 .container{
-
     width: 1280px;
     margin: auto;
 
@@ -32,81 +30,58 @@ header{
 
 
 .nav_checkbox{
-
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     padding: 10px 0px;
-
 }
 
 .logo{
-    
     padding-left: 10px;
-
 }
 
 .imgLogo {
     max-width: 10.5em;
-    
-    
 }
 
 .tab-nav{
-
     outline: none;
     display: none;
-
 }
 
 .label{
-
     display: none;
-    color: white;
-
+    color: var(--color-white);
 }
 
 .burger{
-
     width: 50px;
     height: 5px;
-    background-color: #07ade0;
+    background-color:var(--primary-color);
     margin-top:8px;
-
 }
 
 .content_nav{
-
     grid-column: 3;
     list-style: none;
     margin: 0;
     padding: 0;
-
 }
 
 .content_nav li{
-
     display: inline-block;
     padding-right: 15px;
-    
-    
-    
-
 }
 
 .content_nav li a{
-
     text-decoration: none;
     font-weight: 900;
-    color: #07ade0;
+    color:var(--primary-color);
     position: relative;
-    
     padding: 3px;
-
 }
 
 .content_nav li a::after{
-
     content: '';
     display: block;
     height: 2px;
@@ -117,73 +92,55 @@ header{
     transform-origin: right;
     transform: scale(0, 1);
     transition: transform ease-in-out 0.5s;
-
 }
 
 .content_nav li a:hover::after{
-
     transform: scale(1, 1);
-
 }
 
 .banner{
     grid-area: banner;
     display: flex;
     flex-direction: column;
-  width: 100%; 
-  max-width: 100%; 
-    
+    width: 100%; 
+    max-width: 100%; 
 }
 .bannerImg {
-    
     object-fit: cover;
     display: flex;
-    justify-content: center;
-  width: 100%; 
-  max-width: 100%;
-  height: 100%;
+    justify-content: center; 
+    max-width: 100%;
+    max-height: 92vh;
 }
 
-
-
-.textBanner {
-    
+.textBanner {    
     top: 50%;
     left: 45%;
     font-size: 4em;
-    background-color: #07ade0;
-    color: rgb(255, 255, 255);
+    background-color:var(--primary-color);
+    color: var(--color-white);
     z-index: 0;
     text-align: center;
-  width: 100%; 
-  max-width: 100%; 
+    width: 100%; 
+    max-width: 100%; 
 }
 
 
 @media screen and (max-width: 1280px){
-
     .container{
-
         width: 100%;
-        
-
     }
-
 }
 
 @media screen and (max-width: 1010px){
-
     .label{
-
         display: grid;
         cursor: pointer;
         grid-column: 3;
         padding-right: 10px;
-
     }
 
     .content_nav{
-
         display: grid;
         grid-template-columns: 1fr;
         grid-column: 1/4;
@@ -191,30 +148,22 @@ header{
         max-height: 0;
         overflow: hidden;
         transition: all ease-in-out 0.6s;
-
     }
 
     .nav_checkbox input:checked ~ .content_nav{
-
         max-height: 900px;
         font-family: 'Playfair Display', serif;
-        font-weight: 500;
+        font-weight: 600;
         font-size: 20px;
         margin-top: 30px;
         margin-bottom: 30px;
-        
-
     }
 
     .content_nav li{
-
         padding: 15px 0px;
         margin-top: 15px;
-        border-bottom: 1px solid #07ade0;
-
+        border-bottom: var(--border-primary-color);
     }
-
-
 }
 
 @media screen and (max-width: 1010px) {
@@ -222,17 +171,15 @@ header{
     font-size: 2em;
   }
 }
+
 @media screen and (max-width: 645px) {
   .textBanner {
     font-size: 18px;
   }
 }
 
-
 @media screen and (max-width: 535px) {
   .banner {
     margin-top: 50px;
   }
 }
-
-

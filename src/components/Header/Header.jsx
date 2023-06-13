@@ -1,4 +1,4 @@
-import './Header.css';
+import "../../css/Style.css";
 import Logo from './REVERBERE_logo_png.png';
 import Clinica from './clinica.jpg';
 
