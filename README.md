@@ -1,12 +1,13 @@
 ## clinicareverbere
 Site da clinica de psicologia reverbere - trabalho bloco 1 semestre 2 engenharia de software - Projeto de Bloco
-# Link Replit do projeto
-https://replit.com/@GuilhermeCunh16/clinicareverbere
+
+Commits passados foram excluidos pela minha falta de conhecimento no Git, forcei push.
+REPLIT NÃO É MAIS ATUALIZADO
 
 
 # Fazer:
 
-rodapé com contatos endereço formulario de contato e mapas
+testing
 
 # IDENTIDADE VISUAL:
 
